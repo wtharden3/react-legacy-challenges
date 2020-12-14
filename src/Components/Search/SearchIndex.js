@@ -60,9 +60,11 @@ class SearchIndex extends Component {
           // value={this.state.searchValue}
           onChange={e => this.searchFn(e.target.value)}
         />
-        <h3>Results:</h3>
+        <hr />
+       
+        <h3>List</h3>
+        <hr />
         <ul></ul>
-        <h2>function results below</h2>
         {this.state.things
           .filter(thing => {
             if (thing.includes(this.state.searchValue)) {

@@ -72,7 +72,7 @@ class TodoIndex extends Component {
       return (
         <div>
           <span style={{ fontStyle: 'italic' }}>Add a task</span>
-          <h2>Task List</h2>
+          <h3>Task List</h3>
           <br />
           <ul>
             {taskList.map((task, index) => {
