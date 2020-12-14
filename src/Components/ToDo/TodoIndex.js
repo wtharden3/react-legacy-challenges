@@ -72,6 +72,7 @@ class TodoIndex extends Component {
                     type="checkbox"
                     checked={isComplete}
                     onClick={updateCheckBox}
+                    onChange={() => console.log('checkbox clicked')}
                   />
                 </li>
               );
