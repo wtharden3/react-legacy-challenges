@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Row, Col } from 'reactstrap';
+//import DisplayTodos from './DisplayTodos';
 
 class TodoIndex extends Component {
   constructor(props) {
@@ -18,13 +19,6 @@ class TodoIndex extends Component {
     arr.push(task);
 
     this.setState({ taskList: arr });
-
-    // console.log(
-    //   'I added a task',
-    //   task,
-    //   ' and here is the updated task list ',
-    //   arr
-    // );
   };
 
   componentDidMount() {
@@ -55,6 +49,7 @@ class TodoIndex extends Component {
                     type="checkbox"
                     checked={isComplete}
                     onClick={updateCheckBox}
+                    onChange={() => console.log('checkbox clicked')}
                   />
                 </li>
               );
@@ -116,6 +111,7 @@ class TodoIndex extends Component {
           </Row>
         </Form>
         {this.displayTasks()}
+        {/*<DisplayTodos task={this.state.task} taskList={this.state.taskList} taskCompleted={this.state.taskCompleted} updateCheckBox={this.checkBox()}/>*/}
       </div>
     );
   }
