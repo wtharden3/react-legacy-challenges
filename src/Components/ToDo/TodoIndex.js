@@ -44,13 +44,24 @@ class TodoIndex extends Component {
             {taskList.map((task, index) => {
               return (
                 <li key={index}>
-                  {task}
-                  <input
+                <Row>
+                  <Col xs="9" className="bg-info">
+                  <p className="text-white font-weight-bold py-1">{task}</p>
+                  
+                  </Col>
+                  <Col xs="3">
+                  <span>Completed?</span>
+                  <br/>
+                  <Input
+                    className="text-info"
                     type="checkbox"
                     checked={isComplete}
                     onClick={updateCheckBox}
                     onChange={() => console.log('checkbox clicked')}
                   />
+                  
+                  </Col>
+                </Row>
                 </li>
               );
             })}
@@ -67,13 +78,24 @@ class TodoIndex extends Component {
             {taskList.map((task, index) => {
               return (
                 <li key={index} style={{ marginRight: '0' }}>
-                  {task}
-                  <input
+                  <Row>
+                  <Col xs="9" className="bg-info">
+                  <p className="text-white font-weight-bold py-1">{task}</p>
+                  
+                  </Col>
+                  <Col xs="3">
+                  <span>Completed?</span>
+                  <br/>
+                  <Input
+                    className="text-info"
                     type="checkbox"
                     checked={isComplete}
                     onClick={updateCheckBox}
                     onChange={() => console.log('checkbox clicked')}
                   />
+                  
+                  </Col>
+                </Row>
                 </li>
               );
             })}
