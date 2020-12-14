@@ -32,8 +32,8 @@ class TodoIndex extends Component {
   }
 
   checkBox = () => {
-    this.setState({taskCompleted: !this.state.taskCompleted})
-  }
+    this.setState({ taskCompleted: !this.state.taskCompleted });
+  };
 
   displayTasks = () => {
     let task = this.state.task;
@@ -48,13 +48,16 @@ class TodoIndex extends Component {
           <br />
           <ul>
             {taskList.map((task, index) => {
-              return <li key={index}>
-              {task}
-              <input type="checkbox"
-              checked={isComplete}
-              onClick={updateCheckBox}
-              />
-              </li>;
+              return (
+                <li key={index}>
+                  {task}
+                  <input
+                    type="checkbox"
+                    checked={isComplete}
+                    onClick={updateCheckBox}
+                  />
+                </li>
+              );
             })}
           </ul>
         </div>
@@ -70,6 +73,11 @@ class TodoIndex extends Component {
               return (
                 <li key={index} style={{ marginRight: '0' }}>
                   {task}
+                  <input
+                    type="checkbox"
+                    checked={isComplete}
+                    onClick={updateCheckBox}
+                  />
                 </li>
               );
             })}
@@ -91,15 +99,19 @@ class TodoIndex extends Component {
       <div>
         <Form onSubmit={this.handleSubmit}>
           <Row>
-            <Col xs="12" sm="10" style={{paddingRight: '0', paddingLeft: '0'}}>
+            <Col
+              xs="12"
+              sm="10"
+              style={{ paddingRight: '0', paddingLeft: '0' }}
+            >
               <Input
-                style={{width: '100%'}}
+                style={{ width: '100%' }}
                 type="text"
                 onChange={e => this.setState({ task: e.target.value })}
               ></Input>
             </Col>
-            <Col xs="12" sm="2" style={{paddingRight: '0', paddingLeft: '0'}}>
-              <Button style={{width: '100%'}}>Add to List</Button>
+            <Col xs="12" sm="2" style={{ paddingRight: '0', paddingLeft: '0' }}>
+              <Button style={{ width: '100%' }}>Add to List</Button>
             </Col>
           </Row>
         </Form>
