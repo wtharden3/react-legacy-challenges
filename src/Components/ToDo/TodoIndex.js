@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Form, Input, Button, Row, Col } from 'reactstrap';
 
 class TodoIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       task: '',
+      taskCompleted: false,
       taskList: [],
     };
   }
@@ -17,28 +19,42 @@ class TodoIndex extends Component {
 
     this.setState({ taskList: arr });
 
-    console.log(
-      'I added a task',
-      task,
-      ' and here is the updated task list ',
-      arr
-    );
+    // console.log(
+    //   'I added a task',
+    //   task,
+    //   ' and here is the updated task list ',
+    //   arr
+    // );
   };
 
   componentDidMount() {
     console.log(this.state.taskList);
   }
 
+  checkBox = () => {
+    this.setState({taskCompleted: !this.state.taskCompleted})
+  }
+
   displayTasks = () => {
     let task = this.state.task;
     let taskList = this.state.taskList;
+    let isComplete = this.state.taskCompleted;
+    let updateCheckBox = this.checkBox;
+
     if (task && taskList) {
       return (
         <div>
           <h2>Task List</h2>
+          <br />
           <ul>
             {taskList.map((task, index) => {
-              return <li key={index}>{task}</li>;
+              return <li key={index}>
+              {task}
+              <input type="checkbox"
+              checked={isComplete}
+              onClick={updateCheckBox}
+              />
+              </li>;
             })}
           </ul>
         </div>
@@ -48,9 +64,14 @@ class TodoIndex extends Component {
         <div>
           <span style={{ fontStyle: 'italic' }}>Add a task</span>
           <h2>Task List</h2>
+          <br />
           <ul>
             {taskList.map((task, index) => {
-              return <li key={index} style={{ marginRight: '0' }}>{task}</li>;
+              return (
+                <li key={index} style={{ marginRight: '0' }}>
+                  {task}
+                </li>
+              );
             })}
           </ul>
         </div>
@@ -68,15 +89,20 @@ class TodoIndex extends Component {
   render() {
     return (
       <div>
-        TodoIndex
-        <form onSubmit={this.handleSubmit}>
-          <input
-            style={{ minWidth: '300px', width: '40%'}}
-            type="text"
-            onChange={e => this.setState({ task: e.target.value })}
-          ></input>
-          <button>Add to List</button>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+          <Row>
+            <Col xs="12" sm="10" style={{paddingRight: '0', paddingLeft: '0'}}>
+              <Input
+                style={{width: '100%'}}
+                type="text"
+                onChange={e => this.setState({ task: e.target.value })}
+              ></Input>
+            </Col>
+            <Col xs="12" sm="2" style={{paddingRight: '0', paddingLeft: '0'}}>
+              <Button style={{width: '100%'}}>Add to List</Button>
+            </Col>
+          </Row>
+        </Form>
         {this.displayTasks()}
       </div>
     );
